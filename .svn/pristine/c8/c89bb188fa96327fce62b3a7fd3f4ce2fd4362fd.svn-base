@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ktrade.kline.kline.dao.KLineDataDao" >
+  <resultMap id="BaseResultMap" type="org.ktrade.kline.kline.bean.entity.KLineData" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="t_time" property="tTime" jdbcType="BIGINT" />
+    <result column="t_first_price" property="tFirstPrice" jdbcType="DOUBLE" />
+    <result column="t_top_price" property="tTopPrice" jdbcType="DOUBLE" />
+    <result column="t_low_price" property="tLowPrice" jdbcType="DOUBLE" />
+    <result column="t_last_price" property="tLastPrice" jdbcType="DOUBLE" />
+    <result column="t_count" property="tCount" jdbcType="DOUBLE" />
+  </resultMap>
+
+
+  <select id="getMin1ByPrevTradeTimeAndLimit" resultMap="BaseResultMap">
+    <![CDATA[
+    select id,t_time,t_first_price,t_top_price,t_low_price,t_last_price,t_count from min_1 where t_time<=#{prevTradeTime} limit #{limit}
+     ]]>
+  </select>
+
+</mapper>
